@@ -35,7 +35,7 @@ def clean_data(records):
             record.find('STATUS').text == '1' and\
             record.find('EMPID').text not in existed_empid and\
             record.find('PASSPORT').text not in existed_passport and\
-            cal_age(datetime.strptime(record.find('HIRED').text, '%d-%m-%Y').date()) > 3:
+            cal_age(datetime.strptime(record.find('HIRED').text, '%d-%m-%Y').date()) >= 3:
 
             data_return.append({el.tag: el.text for el in record})
             existed_empid.append(record.find('EMPID').text)

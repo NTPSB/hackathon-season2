@@ -7,6 +7,7 @@ EMPID,PASSPORT,FIRSTNAME,LASTNAME,GENDER,BIRTHDAY,NATIONALITY,HIRED,DEPT,POSITIO
 34,BFS82MEY3CX,Selma,Bush,0,26-03-1972,Italy,10-10-2008,Flight Attendance,Airhostess,1,USA
 50,MRC33GHJ2KW,Calvin,Roach,1,16-04-1999,Mexico,18-03-2011,Flight Attendance,Steward,1,Europe
 66,WKV12UQC6QF,Zachery,Valentine,0,04-06-1971,Philippines,25-08-2011,Flight Attendance,Steward,1,Middle East
+80,EUC74ENE9ZK,Ryan,Rush,0,13-06-1998,Italy,31-07-2019,Aircraft Maintenance,Pilot,1,Middle East
 93,UXL43IOW6OV,Honorato,Maxwell,1,09-03-1982,France,04-02-2017,Aircraft Maintenance,Airhostess,1,Europe
 95,OUP31WOE2IE,Dara,Wilcox,1,29-06-1996,Singapore,18-05-2011,Flight Attendance,Airhostess,1,Canada
 97,SUF73DKV4QE,Dante,Hart,0,21-12-1999,Peru,22-02-2016,Pilot,Pilot,1,Europe
