@@ -88,8 +88,8 @@ def visualize(csv_file):
     width = 0.35
     p1 = axis[1, 1].bar(ind, tuple(df_male[0].values), width)
     p2 = axis[1, 1].bar(ind, tuple(df_female[0].values), width, bottom = tuple(df_male[0].values))
-    axis[1, 1].set_ylabel('Contribution')
-    axis[1, 1].set_title('Contribution by the teams')
+    axis[1, 1].set_ylabel('Count')
+    axis[1, 1].set_title('Position/Gender')
     axis[1, 1].set_xticks(ind)
     axis[1, 1].set_xticklabels(['Airhostess', 'Pilot', 'Steward'])
     axis[1, 1].legend((p1[0], p2[0]), ('Male', 'Female'))
