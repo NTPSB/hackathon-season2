@@ -63,24 +63,19 @@ def insert2sqlite(csv_file, database_name, table_name):
         con.commit()
         con.close()
 
-# def visualize():
-#     df = pd.read_csv("test4.csv")
-#     print(len(df[df['GENDER']==0]))
-#     print(len(df[df['GENDER']==1]))
-#     import numpy as np
-#     t=np.arange(0, 5, 0.2)
+def visualize(csv_file):
+    df = pd.read_csv(csv_file)
+    # pie chart: gender
+    plt.subplot(121)
+    data = [len(df[df['GENDER']==0]), len(df[df['GENDER']==1])]
+    plt.pie(data, labels = ["Male", "Female"])
+    plt.xlabel("Gender")
 
-#     # pie chart: gender
-#     plt.subplot(121)
-#     data = [len(df[df['GENDER']==0]), len(df[df['GENDER']==1])]
-#     plt.pie(data, labels = ["Male", "Female"])
-#     plt.xlabel("Gender")
-
-#     plt.subplot(122)
-#     region = df['REGION'].value_counts().rename_axis('region').reset_index(name='counts')
-#     plt.pie(region['counts'], labels=region['region'])
-#     plt.xlabel("Graph 1")
-#     plt.show()
+    plt.subplot(122)
+    region = df['REGION'].value_counts().rename_axis('region').reset_index(name='counts')
+    plt.pie(region['counts'], labels=region['region'])
+    plt.xlabel("Region")
+    plt.show()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -95,3 +90,6 @@ if __name__ == '__main__':
     
     if args.action == 'csv2sqlite':
         insert2sqlite(csv_file=args.csv, database_name=args.db, table_name=args.table)
+    
+    if args.action == 'visualize':
+        visualize(csv_file=args.csv)
