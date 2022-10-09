@@ -1,7 +1,7 @@
 from xml.etree import ElementTree
 import pandas as pd
 import matplotlib.pyplot as plt
-import csv, sqlite3
+import csv, sqlite3, json
 import argparse
 from datetime import datetime
 import numpy as np
@@ -95,6 +95,17 @@ def visualize(csv_file):
     axis[1, 1].legend((p1[0], p2[0]), ('Male', 'Female'))
     plt.show()
 
+def sqlite2json(db, json_path):
+    con = sqlite3.connect(db)
+    cursor = con.cursor()
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    tables = cursor.fetchall()
+    for table_name in tables:
+        cursor.execute("SELECT * FROM '{}' ".format(table_name[0]))
+        results = cursor.fetchall()
+        with open(json_path, 'w') as the_file:
+            the_file.write(json.dumps(results))
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-action", "--action", help="action type")
@@ -102,6 +113,7 @@ if __name__ == '__main__':
     parser.add_argument("-csv", "--csv", help="csv file", default='data-devclub-1.csv')
     parser.add_argument("-db", "--db", help="database name", default='data-devclub.sqlite')
     parser.add_argument("-table", "--table", help="table name", default='Emp')
+    parser.add_argument("-json", "--json", help="json file", default='data-devclub.json')
     args = parser.parse_args()
     if args.action == 'xml2csv':
         xml2csv(xml_file=args.xml, csv_file=args.csv)
@@ -111,3 +123,6 @@ if __name__ == '__main__':
     
     if args.action == 'visualize':
         visualize(csv_file=args.csv)
+    
+    if args.action == 'sqlite2json':
+        sqlite2json(db=args.db, json_path=args.json)
